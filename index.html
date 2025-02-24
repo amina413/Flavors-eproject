@@ -6,177 +6,133 @@
     <title>FLAVORS</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-
 </head>
 <body>
    <!-- Navbar -->
    <nav class="navbar">
-    <div class="logo">Flavors</div>
+    <div class="logo" id="Home">Flavors</div>
     <ul class="nav-links">
-        <li><a href="#">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li class="dropdown">
             <a href="#">Shop <i class="fa-solid fa-chevron-down"></i></a>
-            <div class="dropdown-content">
-                <a href="#">Bestsellers</a>
-                <a href="#">Hot Deals</a>
-                <a href="#">New Arrivals</a>
-            </div>
+            <ul class="dropdown-content">
+                <li><a href="#">Bestsellers</a></li>
+                <li><a href="#">Hot Deals</a></li>
+                <li><a href="#">New Arrivals</a></li>
+            </ul>
         </li>
         <li><a href="#">Gallery</a></li>
-        <li><a href="#">Reviews</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="#Reviews">Reviews</a></li>
+        <li><a href="#About Us">About Us</a></li>
+        <li><a href="#Contact Us">Contact Us</a></li>
         <li><a href="#">Site Map</a></li>
     </ul>
 </nav>
-    <!-- hero-section -->
-
+    <!-- Hero Section -->
     <div class="hero-section">
         <img src="assets/hero-image.jpg" alt="spices" class="hero-image">
         <div class="hero-text">
             <h1>FLAVORS</h1>
             <p>Discover the taste of perfection</p>
+            <h3><span class="multiple-text"></span></h3> <!-- Typing animation applies here -->
             <a href="#" class="btn">LEARN MORE</a>
         </div>
     </div>
 
-    <!-- about-us -->
-
-    <div class="about-us">
+    <!-- About Us Section -->
+    <div class="about-us" id="About Us">
         <div class="about-container">
             <div class="about-text">
                 <h2>ABOUT US</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <p>Lorem ipsum dolor sit amet...</p>
             </div>
-            <!-- <div class="about-image">
-                <img src="about-us-image.jpg" alt="About Us Image">
-            </div> -->
         </div>
     </div>
 
-        <!-- Bestsellers -->
-        <div class="bestsellers">
-            <div class="bs-container">
-                <div class="bs-text">
-                    <h2>Our bestsellers</h2>
-                    <p>Discover our top-rated flavors that customers love! From rich spices to exotic blends, our bestsellers bring the perfect taste to your table.</p>
-                </div>
-                <div class="bs-image">
-                  <img src="assets/best-1.jpg" alt="bestseller item">
-                  <img src="assets/best-2.jpg" alt="bestseller item">
-                  <img src="assets/best-3.jpg" alt="bestseller item">
-                </div>
-                <a href="#" class="bs-btn">SHOP NOW</a>
+    <!-- Bestsellers Section -->
+    <div class="bestsellers">
+        <div class="bs-container">
+            <div class="bs-text">
+                <h2>Our Bestsellers</h2>
+                <p>Discover our top-rated flavors that customers love...</p>
             </div>
+            <div class="bs-image">
+                <img src="assets/best-1.jpg" alt="bestseller item">
+                <img src="assets/best-2.jpg" alt="bestseller item">
+                <img src="assets/best-3.jpg" alt="bestseller item">
             </div>
+            <a href="#" class="bs-btn">SHOP NOW</a>
         </div>
+    </div>
 
-    <!-- Testimonials -->
-
-    <div class="testimonials">
+    <!-- Testimonials Section -->
+    <div class="testimonials" id="Reviews">
         <div class="test-container">
             <div class="test-text">
-                <h2>What they're saying</h2>
-                <p class="scrolling-text">"Amina is a genius" -Source  </p>
-                <p class="scrolling-text">"Amina is a genius" -Source  </p>
-                <p class="scrolling-text">"Amina is a genius" -Source  </p>
-                <p class="scrolling-text">"Amina is a genius" -Source  </p>
-                <!-- Duplicate the same text for seamless effect -->
-            <p class="scrolling-text">"Amina is a genius" -Source</p>
-            <p class="scrolling-text">"Amina is a genius" -Source</p>
-            <p class="scrolling-text">"Amina is a genius" -Source</p>
-            <p class="scrolling-text">"Amina is a genius" -Source</p>
+                <h2>What They're Saying</h2>
+                <p class="scrolling-text">"Amina is a genius" -Source</p>
+                <p class="scrolling-text">"Amina is a genius" -Source</p>
             </div>
-            <div class=test-text1>
-              <div class="test2">
-                 <p>Quote Source</p>
-                 <h3>"It all begins with an idea. Maybe you want to <br>launch a business."</h3>
-              </div>
-              <div class="test3">
-                 <p>Quote Source</p>
-                 <h3>"It all begins with an idea. Maybe you want to launch a business."</h3>
-              </div>
+            <div class="test-text1">
+                <div class="test2">
+                    <p>Quote Source</p>
+                    <h3>"It all begins with an idea. Maybe you want to launch a business."</h3>
+                </div>
+                <div class="test3">
+                    <p>Quote Source</p>
+                    <h3>"It all begins with an idea. Maybe you want to launch a business."</h3>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Get in Touch Section -->
-<div class="contact-section">
-    <div class="contact-info">
-        <h2>Get in Touch.</h2>
-        <P>We'd love to hear from you! Fill out the form, and we’ll get back to you as soon as possible.</P>
-    </div>
-
-    <form action="#" method="POST" class="contact-form">
-        <label for="email">Email <span class="required">(required)</span></label>
-        <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
-        <label for="message">Message <span class="required">(required)</span></label>
-        <textarea id="message" name="message" placeholder="Your message" required></textarea>
-
-        <button type="submit" class="submit-btn">SEND</button>
-    </form>
-</div>
-
-<!-- end image -->
-
-<!-- <div class="end-image">
-    <div class="end-container">
-            <div class="end-image">
-               <img src="assets/end-img.jpg" alt="spices Image">
-            </div>
-        <div class="end-text">
-            <h2>ABOUT US</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+    <!-- Contact Section -->
+    <div class="contact-section" id="Contact Us">
+        <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>We'd love to hear from you!</p>
         </div>
+
+        <form action="#" method="POST" class="contact-form">
+            <label for="email">Email <span class="required">(required)</span></label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="message">Message <span class="required">(required)</span></label>
+            <textarea id="message" name="message" placeholder="Your message" required></textarea>
+
+            <button type="submit" class="submit-btn">SEND</button>
+        </form>
     </div>
-</div>
-    
-     -->
-<!-- end section -->
-    <div class="end-section">
-        <img src="assets/end-img.jpg" alt="spices" class="end-image">
-        <div class="end-text">
-            <h3>How do we do it?<br>Learn more about us and our process.</h3>
-            <a href="#" class="end-btn">LEARN MORE</a>
-        </div>
-    </div>
-    
+
     <!-- Footer Section -->
-<footer class="footer">
-    <div class="footer-container">
-        
-        <!-- Hours Section -->
-        <div class="footer-column">
-            <h3>Hours</h3>
-            <p>Monday - Friday</p>
-            <p>10 AM - 6 PM</p>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Hours</h3>
+                <p>Monday - Friday</p>
+                <p>10 AM - 6 PM</p>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Flavors</h3>
+                <p>123 Example Road</p>
+                <p>New York, NY 12345</p>
+                <p class="contact-link">email@example.com</p>
+                <p class="contact-link">(555) 555-5555</p>
+            </div>
         </div>
+    </footer>
 
-       <!-- Follow Us Section -->
-    <div class="footer-column">
-       <h3>Follow Us</h3>
-       <div class="social-icons">
-          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-       </div>
-    </div>
-
-
-        <!-- Flavors Contact Section -->
-<div class="footer-column">
-    <h3>Flavors</h3>
-    <p>123 Example Road</p>
-    <p>New York, NY 12345</p>
-    <p class="contact-link">email@example.com</p>
-    <p class="contact-link">(555) 555-5555</p>
-</div>
-
-
-    </div>
-</footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="index.js"></script>
 
 </body>
 </html>
