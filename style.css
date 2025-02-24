@@ -73,6 +73,29 @@ nav {
     color: #ff5722;
 }
 
+    
+.navbar {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+    background: white;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+}
+body {
+      padding-top: 60px; /* Adjust based on navbar height */
+}
+
+.multiple-text {
+    display: inline-block; /* Ensures the text behaves like an inline element */
+    margin-left: -450px; /* Adjust the value to shift left */
+}
+
+    
+
+
 /* Dropdown Styling */
 .dropdown {
     position: relative;
@@ -340,7 +363,7 @@ nav {
     font-weight: 500;
     font-family: Raleway;
     margin-bottom: 50px;
-    margin-top: ;
+    margin-top: 10px;
 }
 
 .test-text {
