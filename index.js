@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   document.getElementById("hot-deals-dropdown")?.addEventListener("click", function (event) {
       event.preventDefault();
-      openPopup(["assets/best-1.jpg", "assets/best-2.jpg", "assets/best-3.jpg"]);
+      openPopup(["assets/best-2.jpg", "assets/best-3.jpg", "assets/best-1.jpg"]);
   });
 
   document.getElementById("new-arrivals-dropdown")?.addEventListener("click", function (event) {
