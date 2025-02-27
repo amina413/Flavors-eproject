@@ -1,3 +1,12 @@
+// Visitor Count Logic
+document.addEventListener("DOMContentLoaded", function () {
+    let count = localStorage.getItem("visitorCount") || 0;
+    count++;
+    localStorage.setItem("visitorCount", count);
+    document.getElementById("visitorCount").innerText = count;
+});
+
+
 document.addEventListener("DOMContentLoaded", function () {
   // Typing Animation
   const typed = new Typed('.multiple-text', {
@@ -57,4 +66,43 @@ document.addEventListener("DOMContentLoaded", function () {
           popup.style.display = "none";
       }
   });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    function updateTicker(location) {
+        const now = new Date();
+        const dateStr = now.toDateString() + " | " + now.toLocaleTimeString();
+        const locationStr = location ? `📍 ${location}` : "Location Unavailable";
+        
+        // Add wide gaps between each item
+        const tickerText = (`${dateStr} | ${locationStr} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `).repeat(4);
+        
+        document.getElementById("ticker-text").innerHTML = tickerText;
+    }
+
+    function fetchLocation() {
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    fetch(`https://geocode.maps.co/reverse?lat=${lat}&lon=${lon}&api_key=YOUR_API_KEY`)
+                        .then(response => response.json())
+                        .then(data => {
+                            const location = `${data.address.city || data.address.town}, ${data.address.country}`;
+                            updateTicker(location);
+                        })
+                        .catch(() => updateTicker(null));
+                },
+                function () {
+                    updateTicker(null);
+                }
+            );
+        } else {
+            updateTicker(null);
+        }
+    }
+
+    fetchLocation();
+    setInterval(fetchLocation, 60000); // Update every minute
 });

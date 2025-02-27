@@ -10,7 +10,10 @@
 <body>
    <!-- Navbar -->
    <nav class="navbar">
-    <div class="logo" id="Home">Flavors</div>
+    <!-- <div class="visitor-counter">Visitors: <span id="visitorCount">0</span></div> -->
+    <div class="logo" id="Home">Flavors
+        <div class="visitor-counter">Visitors: <span id="visitorCount">0</span></div>
+    </div>
     <ul class="nav-links">
         <li><a href="#">Home</a></li>
         <li class="dropdown">
@@ -42,7 +45,7 @@
         <img src="assets/hero-image.jpg" alt="spices" class="hero-image">
         <div class="hero-text">
             <h1>FLAVORS</h1>
-            <p>Discover the taste of perfection</p>
+            <!-- <p>Discover the taste of perfection</p> -->
             <h3><span class="multiple-text"></span></h3> <!-- Typing animation applies here -->
             <a href="#" class="btn">LEARN MORE</a>
         </div>
@@ -113,6 +116,19 @@
         </form>
     </div>
 
+    <!-- end-section -->
+    <div class="end-section">
+        <img src="assets/end-img.jpg" alt="spices" class="end-image">
+        <div class="end-text">
+            <h3>FLAVORS</h3>
+            <!-- <p>Discover the taste of perfection</p> -->
+            <a href="#" class="btn">LEARN MORE</a>
+        </div>
+    </div>
+    
+    
+    
+
     <!-- Footer Section -->
     <footer class="footer">
         <div class="footer-container">
@@ -137,6 +153,15 @@
                 <p class="contact-link">(555) 555-5555</p>
             </div>
         </div>
+        <!-- Scrolling Ticker -->
+        <div class="ticker-container">
+            <div class="ticker">
+                <p id="ticker-text">
+                    📅 Fetching location and date... &nbsp;&nbsp; 📅 Fetching location and date... &nbsp;&nbsp;
+                </p>
+            </div>
+        </div>
+        
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>

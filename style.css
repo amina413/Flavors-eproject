@@ -41,14 +41,31 @@ nav {
 
 }
 
+/* Visitor Counter Styling */
+.visitor-counter {
+    color: white;
+    font-size: 10px;
+    background-color:#dcd9d8;
+    color: black;
+    margin-top: 8px;
+    padding: 10px;
+    height: 40px;
+    border-radius: 5px;
+    /* margin-left: auto; */
+}
+
+
 .logo {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
     font-size: 2rem;
     font-weight: bold;
     /* color:  #ff5722; */
     color: #EC5C39;
     font-family: cabin;
     font-weight: 200;
-    margin-left: 30px;
+    /* margin-left: 30px; */
 }
 
 .nav-links {
@@ -91,6 +108,8 @@ body {
 .multiple-text {
     display: inline-block; /* Ensures the text behaves like an inline element */
     margin-left: -450px; /* Adjust the value to shift left */
+    font-size: 20px;
+    font-weight: 200;
 }
 
 
@@ -107,15 +126,18 @@ body {
     list-style: none;
     padding: 0;
     margin: 0;
-    width: 150px;
+    width: 1500px;
+    height: 200px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-left: 570px;
+    /* margin-left: 570px; */
 }
 
 .dropdown-menu li a {
     padding: 10px 15px;
     display: block;
     color: black;
+    margin-left: 20px;
+    
 }
 
 .dropdown-menu li a:hover {
@@ -741,6 +763,39 @@ body {
 }
 
 
+/* Scrolling Ticker Styling */
+.ticker-container {
+    width: 100%;
+    background-color:#952f10;
+    overflow: hidden;
+    white-space: nowrap;
+    position:fixed;
+    bottom: 0;
+    left: 0;
+    color: white;
+    /* padding: 10px 0; */
+}
+
+.ticker {
+    display: flex;
+    width: 200%;
+    animation: ticker-scroll 20s linear infinite;
+    /* padding-left: 50%; */
+     /* gap: 30px;  */
+}
+#ticker-text {
+    letter-spacing: 1px; /* Slightly increase letter spacing */
+    margin-right: 50px; /* Add spacing between repeated text */
+}
+
+@keyframes ticker-scroll {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
 
 
 
