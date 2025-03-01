@@ -15,11 +15,10 @@
     <div class="logo" id="Home">Flavors
         <div class="visitor-counter">Visitors: <span id="visitorCount">0</span></div>
     </div>
-     <!-- Hamburger Menu Icon for Mobile -->
-     <div class="menu-toggle" id="mobile-menu">
+    <!-- Hamburger Menu Icon for Mobile -->
+    <div class="menu-toggle" id="mobile-menu">
         <i class="fa-solid fa-bars"></i>
     </div>
-    
     <ul class="nav-links">
         <li><a href="#">Home</a></li>
         <li class="dropdown">
@@ -30,27 +29,30 @@
                 <li><a href="#" id="new-arrivals-dropdown">New Arrivals</a></li>
             </ul>
         </li>
-<<<<<<< HEAD
-        <li><a href="#" id="gallery-link">Gallery</a></li>
-=======
         <li><a href="#gallery-section" class="smooth-scroll">Gallery</a></li>
->>>>>>> Updated homepage layout and fixed CSS issues
         <li><a href="#Reviews">Reviews</a></li>
         <li><a href="#About Us">About Us</a></li>
         <li><a href="#Contact Us">Contact Us</a></li>
-        <li><a href="#site-map" class="smooth-scroll">Site Map</a></li> <!-- Scrolls to Site Map -->
+        <li><a href="#Site Map">Site Map</a></li>
     </ul>
 </nav>
 
 <!-- Popup Modal for Gallery and All Sections -->
 <div id="gallery-popup" class="gallery-popup">
+    <button id="popup-prev" class="popup-nav">❮</button>
     <div class="gallery-content">
-        <span id="gallery-close" class="close-btn">&times;</span>
-        <button id="gallery-prev" class="gallery-nav">&#10094;</button>
         <img src="assets/best-1.jpg" alt="Gallery Image">
-        <button id="gallery-next" class="gallery-nav">&#10095;</button>
+        <div class="gallery-text">
+            <h2>Gallery Image</h2>
+            <p>Product description goes here.</p>
+            <div class="gallery-stars"></div>
+        </div>
     </div>
+    <button id="popup-next" class="popup-nav">❯</button>
+    <button id="gallery-close" class="close-btn">✖</button>
 </div>
+
+
 
     <!-- Hero Section -->
     <div class="hero-section" data-aos="zoom-in">
@@ -73,27 +75,6 @@
         </div>
     </div>
 
-    <!-- Bestsellers Section -->
-<<<<<<< HEAD
-    <div class="bestsellers">
-=======
-    <!-- <div class="bestsellers" id="Bestsellers">
->>>>>>> Updated homepage layout and fixed CSS issues
-        <div class="bs-container">
-            <div class="bs-text">
-                <h2 data-aos="zoom-in-down">Our Bestsellers</h2>
-                <p data-aos="zoom-in-down">Discover our top-rated flavors that customers love...</p>
-            </div>
-            <div class="bs-image" data-aos="zoom-in-up">
-                <img src="assets/best-1.jpg" alt="bestseller item">
-                <img src="assets/best-2.jpg" alt="bestseller item">
-                <img src="assets/best-3.jpg" alt="bestseller item">
-            </div>
-            <a href="#" class="bs-btn">SHOP NOW</a>
-        </div>
-    </div> -->
-
-
     <!-- Gallery Section (Replacing Bestsellers) -->
 <div id="gallery-section" class="gallery">
     <h2>Our Gallery</h2>
@@ -110,6 +91,7 @@
         <button class="next">&#10095;</button> <!-- Right Arrow -->
     </div>
 </div>
+
 
     <!-- Testimonials Section -->
     <div class="testimonials" id="Reviews">
@@ -159,12 +141,9 @@
             <a href="#" class="btn">LEARN MORE</a>
         </div>
     </div>
-<<<<<<< HEAD
-=======
-    
-    
-    <!-- Site Map Section -->
-<div id="site-map" class="site-map-section">
+
+     <!-- Site Map Section -->
+<div id="Site Map" class="site-map-section">
     <h2>Site Map</h2>
     <p>This section provides an overview of all the pages and sections in the FLAVORS website.</p>
     
@@ -179,8 +158,6 @@
         <li><a href="#">Contact Us</a> - Get in touch with us.</li>
     </ul>
 </div>
-
->>>>>>> Updated homepage layout and fixed CSS issues
 
     <!-- Footer Section -->
     <footer class="footer">
