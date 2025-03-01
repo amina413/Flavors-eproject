@@ -1,83 +1,137 @@
-// Visitor Count Logic
 document.addEventListener("DOMContentLoaded", function () {
-    let count = localStorage.getItem("visitorCount") || 0;
+    console.log("DOM fully loaded and parsed");
+
+    // 🚀 Visitor Count Logic
+    let count = parseInt(localStorage.getItem("visitorCount")) || 0;
     count++;
     localStorage.setItem("visitorCount", count);
-    document.getElementById("visitorCount").innerText = count;
-});
+    const visitorCountElement = document.getElementById("visitorCount");
+    if (visitorCountElement) {
+        visitorCountElement.innerText = count;
+    }
 
+    // 🚀 Typing Animation
+    if (document.querySelector(".multiple-text") && typeof Typed !== "undefined") {
+        new Typed(".multiple-text", {
+            strings: ["Spices", "Herbs", "Clove", "Cinnamon", "Garlic", "Nutmeg"],
+            typeSpeed: 60,
+            backSpeed: 60,
+            backDelay: 1000,
+            loop: true,
+        });
+    }
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Typing Animation
-  const typed = new Typed('.multiple-text', {
-      strings: ['Spices', 'Herbs', 'Clove', 'Cinnamon', 'Garlic', 'Nutmeg'],
-      typeSpeed: 60,
-      backSpeed: 60,
-      backDelay: 1000,
-      loop: true,
-  });
+    // 🚀 Shop Dropdown Menu
+    const shopLink = document.getElementById("shop-link");
+    const dropdownMenu = document.querySelector(".dropdown");
 
-  // Dropdown Menu
-  const shopLink = document.getElementById("shop-link");
-  const dropdown = document.querySelector(".dropdown");
+    if (shopLink && dropdownMenu) {
+        shopLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            dropdownMenu.classList.toggle("active");
+            event.stopPropagation();
+        });
 
-  shopLink.addEventListener("click", function (event) {
-      event.preventDefault();
-      dropdown.classList.toggle("active");
-  });
+        // Close dropdown when clicking outside
+        document.addEventListener("click", function (event) {
+            if (!dropdownMenu.contains(event.target) && event.target !== shopLink) {
+                dropdownMenu.classList.remove("active");
+            }
+        });
+    }
 
-  document.addEventListener("click", function (event) {
-      if (!dropdown.contains(event.target) && event.target !== shopLink) {
-          dropdown.classList.remove("active");
-      }
-  });
+    // 🚀 Popup & Gallery Logic
+    const galleryPopup = document.getElementById("gallery-popup");
+    const galleryImages = ["assets/best-1.jpg", "assets/best-2.jpg", "assets/best-3.jpg"];
+    let currentIndex = 0;
 
-  // Popup Logic
-  const popup = document.getElementById("popup");
-  const closeBtn = document.querySelector(".close-btn");
-  const popupImages = document.querySelector(".popup-images");
+    // Star ratings
+    const starRatings = {
+        "assets/best-1.jpg": 5,
+        "assets/best-2.jpg": 4,
+        "assets/best-3.jpg": 5
+    };
 
-  function openPopup(images) {
-      popupImages.innerHTML = images.map(img => `<img src="${img}" alt="Product">`).join("");
-      popup.style.display = "flex";
-  }
+    function updateGalleryImage() {
+        const imgElement = document.querySelector(".gallery-content img");
+        if (imgElement) {
+            let currentImage = galleryImages[currentIndex];
+            imgElement.src = currentImage;
+            updateStars(currentImage);
+        }
+    }
 
-  // Ensure elements exist before adding event listeners
-  document.getElementById("hot-deals")?.addEventListener("click", function () {
-      openPopup(["assets/best-1.jpg", "assets/best-2.jpg", "assets/best-3.jpg"]);
-  });
+    function updateStars(imageSrc) {
+        const starContainer = document.querySelector(".gallery-stars");
+        if (!starContainer) return;
+        starContainer.innerHTML = "";
 
-  document.getElementById("hot-deals-dropdown")?.addEventListener("click", function (event) {
-      event.preventDefault();
-      openPopup(["assets/best-2.jpg", "assets/best-3.jpg", "assets/best-1.jpg"]);
-  });
+        const starCount = starRatings[imageSrc] || 3;
+        for (let i = 0; i < 5; i++) {
+            let star = document.createElement("span");
+            star.innerHTML = i < starCount ? "★" : "☆";
+            star.classList.add("star");
+            starContainer.appendChild(star);
+        }
+    }
 
-  document.getElementById("new-arrivals-dropdown")?.addEventListener("click", function (event) {
-      event.preventDefault();
-      openPopup(["assets/best-1.jpg", "assets/best-2.jpg", "assets/best-3.jpg"]);
-  });
+    function openGalleryPopup() {
+        if (galleryPopup) {
+            galleryPopup.style.display = "flex";
+            updateGalleryImage();
+        }
+    }
 
-  closeBtn?.addEventListener("click", function () {
-      popup.style.display = "none";
-  });
+    function closeGallery() {
+        if (galleryPopup) {
+            galleryPopup.style.display = "none";
+        }
+    }
 
-  window.addEventListener("click", function (event) {
-      if (event.target === popup) {
-          popup.style.display = "none";
-      }
-  });
-});
+    document.getElementById("gallery-link")?.addEventListener("click", function (event) {
+        event.preventDefault();
+        openGalleryPopup();
+    });
 
-document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("hot-deals-dropdown")?.addEventListener("click", function (event) {
+        event.preventDefault();
+        openGalleryPopup();
+    });
+
+    document.getElementById("new-arrivals-dropdown")?.addEventListener("click", function (event) {
+        event.preventDefault();
+        openGalleryPopup();
+    });
+
+    document.getElementById("bestsellers-dropdown")?.addEventListener("click", function (event) {
+        event.preventDefault();
+        openGalleryPopup();
+    });
+
+    document.getElementById("gallery-next")?.addEventListener("click", function () {
+        currentIndex = (currentIndex + 1) % galleryImages.length;
+        updateGalleryImage();
+    });
+
+    document.getElementById("gallery-prev")?.addEventListener("click", function () {
+        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+        updateGalleryImage();
+    });
+
+    document.getElementById("gallery-close")?.addEventListener("click", closeGallery);
+
+    // 🚀 Ticker & Location
     function updateTicker(location) {
         const now = new Date();
         const dateStr = now.toDateString() + " | " + now.toLocaleTimeString();
         const locationStr = location ? `📍 ${location}` : "Location Unavailable";
-        
-        // Add wide gaps between each item
+
         const tickerText = (`${dateStr} | ${locationStr} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `).repeat(4);
-        
-        document.getElementById("ticker-text").innerHTML = tickerText;
+
+        const tickerElement = document.getElementById("ticker-text");
+        if (tickerElement) {
+            tickerElement.innerHTML = tickerText;
+        }
     }
 
     function fetchLocation() {
@@ -104,5 +158,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     fetchLocation();
-    setInterval(fetchLocation, 60000); // Update every minute
+    setInterval(fetchLocation, 60000);
 });
