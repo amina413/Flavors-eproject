@@ -249,6 +249,7 @@ a {
 .gallery-stars {
     text-align: left; /* Aligns the stars to the left */
     margin-left: -420px; /* Moves the stars slightly to the left */
+    cursor: pointer;
 }
 
 .star {
