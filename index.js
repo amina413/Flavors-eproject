@@ -10,41 +10,58 @@ document.addEventListener("DOMContentLoaded", function () {
         visitorCountElement.innerText = count;
     }
 
-    // hamburger menu
-document.addEventListener("DOMContentLoaded", function () {
+    // 🚀 Hamburger Menu Logic
     const menuToggle = document.getElementById("mobile-menu");
     const navLinks = document.querySelector(".nav-links");
 
-    menuToggle.addEventListener("click", function () {
-        navLinks.classList.toggle("active");
-    });
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
 
-    // 🚀 Typing Animation
-    if (document.querySelector(".multiple-text") && typeof Typed !== "undefined") {
-        new Typed(".multiple-text", {
-            strings: ["Spices", "Herbs", "Clove", "Cinnamon", "Garlic", "Nutmeg"],
-            typeSpeed: 60,
-            backSpeed: 60,
-            backDelay: 1000,
-            loop: true,
+        // Close menu when a link is clicked
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+            });
         });
     }
-// Smooth scrolling for links
-document.querySelectorAll(".smooth-scroll").forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute("href").substring(1);
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 50,
-                behavior: "smooth"
-            });
-        }
-    });
-});
-});
 
+    // 🚀 Fade Text Animation
+    const texts = ["Spices", "Herbs", "Clove", "Cinnamon", "Garlic", "Nutmeg"];
+    let index = 0;
+    const textElement = document.getElementById("text-display");
+
+    if (textElement) {
+        textElement.style.transition = "opacity 1s ease-in-out";
+
+        function fadeText() {
+            textElement.style.opacity = 0; // Fade out
+            setTimeout(() => {
+                index = (index + 1) % texts.length; // Loop through texts
+                textElement.textContent = texts[index]; // Change text
+                textElement.style.opacity = 1; // Fade in
+            }, 1000); // Delay should match the CSS transition duration
+        }
+
+        setInterval(fadeText, 3000); // Change text every 3 seconds
+    }
+
+    // 🚀 Smooth Scrolling for Links
+    document.querySelectorAll(".smooth-scroll").forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                const offset = 50; // Adjust for fixed navbar height
+                window.scrollTo({
+                    top: targetElement.offsetTop - offset,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
 
     // 🚀 Shop Dropdown Menu
     const shopLink = document.getElementById("shop-link");
@@ -65,126 +82,163 @@ document.querySelectorAll(".smooth-scroll").forEach(anchor => {
         });
     }
 
-    // 🚀 Popup & Gallery Logic
+    // 🚀 Gallery & Popup Logic
     const galleryPopup = document.getElementById("gallery-popup");
-    const galleryImages = ["assets/img-10.jpg", "assets/img-4.jpg", "assets/img-3.jpg"];
-    let currentIndex = 0;
+    const galleryImage = document.querySelector(".gallery-content img");
+    const galleryDescription = document.querySelector(".gallery-description");
 
-    // Star ratings
-const starRatings = {
-    "assets/img-10.jpg": 5,
-    "assets/img-4.jpg": 4,
-    "assets/img-3.jpg": 5
-};
+    if (galleryPopup && galleryImage && galleryDescription) {
+        const galleryData = {
+            bestsellers: [
+                { src: "assets/img-8.jpg", description: "Premium quality spice blend, perfect for cooking." },
+                { src: "assets/img-17.jpg", description: "Organic cloves sourced from the finest farms." },
+                { src: "assets/img-1.jpg", description: "Cinnamon sticks with a rich aroma and flavor." }
+            ],
+            hotDeals: [
+                { src: "assets/img-16.jpg", description: "Limited-time discount on fresh garlic paste!" },
+                { src: "assets/img-10.jpg", description: "Buy one get one free on organic nutmeg." },
+                { src: "assets/img-11.jpg", description: "Exclusive offer on dried basil leaves." }
+            ],
+            newArrivals: [
+                { src: "assets/img-9.jpg", description: "Our brand new brown garnishing sauce!" },
+                { src: "assets/img-13.jpg", description: "Special turmeric powder with a strong essence." },
+                { src: "assets/img-14.jpg", description: "Spicy sunday grill sauce special ." }
+            ]
+        };
 
-function updateGalleryImage() {
-    const imgElement = document.querySelector(".gallery-content img");
-    if (imgElement) {
-        let currentImage = galleryImages[currentIndex];
-        imgElement.src = currentImage;
-        updateStars(currentImage);
-    }
-}
+        let currentCategory = "bestsellers";
+        let currentIndex = 0;
 
-function updateStars(imageSrc) {
-    const starContainer = document.querySelector(".gallery-stars");
-    if (!starContainer) return;
-    starContainer.innerHTML = "";
-
-    const starCount = starRatings[imageSrc] || 3;
-    for (let i = 0; i < 5; i++) {
-        let star = document.createElement("span");
-        star.innerHTML = "★";
-        star.classList.add("star");
-        if (i >= starCount) {
-            star.classList.add("inactive"); // Add a class to style unselected stars
+        function updateGalleryImage() {
+            const currentImages = galleryData[currentCategory];
+            if (currentImages && currentImages[currentIndex]) {
+                const { src, description } = currentImages[currentIndex];
+                galleryImage.src = src;
+                galleryDescription.textContent = description;
+                updateStars(src);
+            }
         }
-        star.dataset.index = i + 1;
-        star.addEventListener("click", () => handleStarClick(imageSrc, i + 1));
-        starContainer.appendChild(star);
-    }
-}
 
-function handleStarClick(imageSrc, rating) {
-    starRatings[imageSrc] = rating; // Update rating for the image
-    updateStars(imageSrc); // Refresh the displayed stars
-}
-
-// CSS styles for inactive stars
-const style = document.createElement("style");
-style.innerHTML = `
-    .star.inactive {
-        color: gray;
-    }
-`;
-document.head.appendChild(style);
-
-// gallery popup functionality
-    function openGalleryPopup() {
-        if (galleryPopup) {
+        function openGalleryPopup(category) {
+            currentCategory = category;
+            currentIndex = 0;
             galleryPopup.style.display = "flex";
             updateGalleryImage();
         }
-    }
 
-    function closeGallery() {
-        if (galleryPopup) {
+        function closeGallery() {
             galleryPopup.style.display = "none";
+        }
+
+        // Add event listeners to buttons with data-gallery attribute
+        document.querySelectorAll("[data-gallery]").forEach(button => {
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+                const category = this.dataset.gallery;
+                openGalleryPopup(category);
+            });
+        });
+
+        document.getElementById("popup-next")?.addEventListener("click", function () {
+            const maxIndex = galleryData[currentCategory].length - 1;
+            currentIndex = (currentIndex + 1) % (maxIndex + 1);
+            updateGalleryImage();
+        });
+
+        document.getElementById("popup-prev")?.addEventListener("click", function () {
+            const maxIndex = galleryData[currentCategory].length - 1;
+            currentIndex = (currentIndex - 1 + (maxIndex + 1)) % (maxIndex + 1);
+            updateGalleryImage();
+        });
+
+        document.getElementById("gallery-close")?.addEventListener("click", closeGallery);
+
+        // Close gallery when clicking outside
+        document.addEventListener("click", function (event) {
+            if (event.target === galleryPopup) {
+                closeGallery();
+            }
+        });
+
+        // ⭐ Star ratings logic
+        const starRatings = {
+            "assets/img-8.jpg": 5,
+          "assets/img-17.jpg": 4,
+          "assets/img-1.jpg": 5,
+           "assets/img-16.jpg": 3,
+       "assets/img-10.jpg": 4,
+    "assets/img-11.jpg": 5,
+    "assets/img-9.jpg": 4,
+    "assets/img-13.jpg": 3,
+    "assets/img-14.jpg": 5
+        };
+
+        function updateStars(imageSrc) {
+            const starContainer = document.querySelector(".gallery-stars");
+            if (starContainer) {
+                starContainer.innerHTML = "";
+                const starCount = starRatings[imageSrc] || 3;
+                for (let i = 0; i < 5; i++) {
+                    let star = document.createElement("span");
+                    star.innerHTML = "★";
+                    star.classList.add("star");
+                    if (i >= starCount) {
+                        star.classList.add("inactive");
+                    }
+                    star.dataset.index = i + 1;
+                    star.addEventListener("click", () => handleStarClick(imageSrc, i + 1));
+                    starContainer.appendChild(star);
+                }
+            }
+        }
+
+        function handleStarClick(imageSrc, rating) {
+            starRatings[imageSrc] = rating;
+            updateStars(imageSrc);
         }
     }
 
-    document.getElementById("gallery-link")?.addEventListener("click", function (event) {
-        event.preventDefault();
-        openGalleryPopup();
-    });
+    // 🚀 Carousel Logic
+    const carouselTrack = document.querySelector(".carousel-images");
+    const prevButton = document.querySelector(".prev");
+    const nextButton = document.querySelector(".next");
+    const carouselImages = document.querySelectorAll(".carousel-images img");
 
-    document.getElementById("hot-deals-dropdown")?.addEventListener("click", function (event) {
-        event.preventDefault();
-        openGalleryPopup();
-    });
+    if (carouselTrack && prevButton && nextButton && carouselImages.length > 0) {
+        let index = 0;
+        const imagesPerView = window.innerWidth < 768 ? 1 : 3; // Adjust for mobile
+        const totalImages = carouselImages.length;
+        const imageWidth = carouselImages[0].clientWidth + 10;
 
-    document.getElementById("new-arrivals-dropdown")?.addEventListener("click", function (event) {
-        event.preventDefault();
-        openGalleryPopup();
-    });
+        function updateCarousel() {
+            const translateX = -index * imageWidth + "px";
+            carouselTrack.style.transform = "translateX(" + translateX + ")";
+        }
 
-    document.getElementById("bestsellers-dropdown")?.addEventListener("click", function (event) {
-        event.preventDefault();
-        openGalleryPopup();
-    });
+        nextButton.addEventListener("click", function () {
+            index = (index + 1) % (totalImages - imagesPerView + 1);
+            updateCarousel();
+        });
 
-    document.getElementById("gallery-next")?.addEventListener("click", function () {
-        currentIndex = (currentIndex + 1) % galleryImages.length;
-        updateGalleryImage();
-    });
+        prevButton.addEventListener("click", function () {
+            index = index > 0 ? index - 1 : totalImages - imagesPerView;
+            updateCarousel();
+        });
 
-    document.getElementById("gallery-prev")?.addEventListener("click", function () {
-        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-        updateGalleryImage();
-    });
-    // Event Listeners for Navigation
-document.getElementById("popup-next")?.addEventListener("click", function () {
-    currentIndex = (currentIndex + 1) % galleryImages.length;
-    updateGalleryImage();
-});
-
-document.getElementById("popup-prev")?.addEventListener("click", function () {
-    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-    updateGalleryImage();
-});
-    
-
-    document.getElementById("gallery-close")?.addEventListener("click", closeGallery);
+        setInterval(() => {
+            index = (index + 1) % (totalImages - imagesPerView + 1);
+            updateCarousel();
+        }, 5000);
+    }
 
     // 🚀 Ticker & Location
     function updateTicker(location) {
         const now = new Date();
         const dateStr = now.toDateString() + " | " + now.toLocaleTimeString();
         const locationStr = location ? `📍 ${location}` : "Location Unavailable";
-
         const tickerText = (`${dateStr} | ${locationStr} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `).repeat(4);
-
         const tickerElement = document.getElementById("ticker-text");
+
         if (tickerElement) {
             tickerElement.innerHTML = tickerText;
         }
@@ -216,99 +270,3 @@ document.getElementById("popup-prev")?.addEventListener("click", function () {
     fetchLocation();
     setInterval(fetchLocation, 60000);
 });
-// gallery section
-document.addEventListener("DOMContentLoaded", function () {
-    const carouselTrack = document.querySelector(".carousel-images");
-    const prevButton = document.querySelector(".prev");
-    const nextButton = document.querySelector(".next");
-
-    let index = 0;
-    const imagesPerView = 3; // Show 3 images at a time
-    const totalImages = document.querySelectorAll(".carousel-images img").length;
-    const imageWidth = document.querySelector(".carousel-images img").clientWidth + 10; // Include margin
-
-    function updateCarousel() {
-        const translateX = -index * imageWidth + "px";
-        carouselTrack.style.transform = "translateX(" + translateX + ")";
-    }
-
-    nextButton.addEventListener("click", function () {
-        if (index < totalImages - imagesPerView) {
-            index++;
-        } else {
-            index = 0; // Loop back to start
-        }
-        updateCarousel();
-    });
-
-    prevButton.addEventListener("click", function () {
-        if (index > 0) {
-            index--;
-        } else {
-            index = totalImages - imagesPerView; // Loop to the end
-        }
-        updateCarousel();
-    });
-
-    // Auto-scroll every 5 seconds
-    setInterval(() => {
-        index = (index + 1) % (totalImages - imagesPerView + 1);
-        updateCarousel();
-    }, 5000);
-});
-document.addEventListener("DOMContentLoaded", function () {
-    // Smooth scroll for navbar links
-    document.querySelectorAll(".smooth-scroll").forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute("href").substring(1);
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 50, // Adjust for navbar height
-                    behavior: "smooth"
-                });
-            }
-        });
-    });
-});
-
-// Site Map Section
-document.addEventListener("DOMContentLoaded", function () {
-    // Smooth scroll for normal navbar & site map links
-    document.querySelectorAll(".smooth-scroll").forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute("href").substring(1);
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 50, // Adjust for navbar height
-                    behavior: "smooth"
-                });
-            }
-        });
-    });
-
-    // Scroll to navbar & trigger dropdown for Bestsellers, Hot Deals, New Arrivals
-    document.querySelectorAll(".scroll-and-dropdown").forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            const targetElement = document.getElementById("navbar"); // Scrolls to Navbar
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 20,
-                    behavior: "smooth"
-                });
-            }
-
-            // Open dropdown menu
-            const dropdownMenu = document.querySelector(".dropdown-menu");
-            if (dropdownMenu) {
-                dropdownMenu.classList.add("open"); // Add 'open' class to dropdown
-                setTimeout(() => dropdownMenu.classList.remove("open"), 3000); // Auto-close after 3s
-            }
-        });
-    });
-});
-
