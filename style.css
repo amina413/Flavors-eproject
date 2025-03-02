@@ -30,8 +30,11 @@ a {
 }
 
 
-/* Navbar - Ensure Everything Stays in One Row */
+
+
+
 .navbar {
+
     display: flex;
     justify-content: space-between; /* Spread items horizontally */
     align-items: center;
@@ -69,9 +72,9 @@ a {
     flex-direction: row-reverse;
     gap: 20px;
     font-size: 2rem;
-    font-weight: bold;
+    font-weight:500;
     color: #EC5C39;
-    font-family: cabin;
+    font-family: Raleway;
 }
 
 /* Navbar Links */
@@ -104,6 +107,14 @@ a {
     color: black;
     cursor: pointer;
 }
+
+
+.multiple-text {
+    display: inline-block; /* Ensures the text behaves like an inline element */
+    margin-left: -450px; /* Adjust the value to shift left */
+}
+
+
 
 /* Responsive Navbar - Keep Everything in One Line */
 @media (max-width: 768px) {
@@ -149,6 +160,7 @@ a {
 
 
 
+
 /* Dropdown menu */
 .dropdown-menu {
     display: none;
@@ -164,7 +176,10 @@ a {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     /* margin-left: 570px; */
 }
-
+/* Open the dropdown when class 'open' is added */
+.dropdown-menu.open {
+    display: block;
+}
 .dropdown-menu li a {
     padding: 10px 15px;
     display: block;
@@ -457,15 +472,16 @@ a {
     object-fit: cover;
     z-index: -1;
 }
-/* 
-.hero-text {
 
+.hero-text p{
     padding: 20px;
     display: flex;
     flex-direction: column;
+    font-size: 1.5rem;
+    font-weight: 200;
   
-    margin-left: 100px;
-} */
+    /* margin-left: 100px; */
+}
 
 .hero-text {
     position: absolute;
@@ -606,7 +622,7 @@ a {
     background-color: #F4F4F3;
     /* position: absolute; */
     width: 100%;
-    height: 75vh;
+    height: 100vh;
     /* display: flex; */
     /* align-items:center; */
     /* justify-content:left; */
@@ -634,88 +650,33 @@ a {
     line-height: 35px;
 }
 
-.bestsellers {
-    background-color: white;
-    /* position: absolute; */
-    width: 100%;
-    height: 100%;
-    /* display: flex; */
-    /* align-items:center; */
-    /* justify-content:left; */
-    /* text-align: center; */
-    color: black;
-    overflow: hidden;
+.about-text strong {
+    color: #EC5C39; /* Matches the logo color */
+    font-weight: bold;
 }
-.bs-container{
-    /* display: flex; */
-    /* flex-direction: column; */
-    padding: 100px;
-    text-align: center;
-}
-.bs-text h2 {
-    margin-bottom: 5vh;
-    font-family: cabin;
-    font-size: 3rem;
-    font-weight:bold;
-}
-.bs-text p {
-    margin-top: 5vh;
-    font-family: Raleway;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 30px;
-    margin-bottom: 30px;
-}
-.bs-image {
-    display: flex;
-    justify-content: center; /* Center images */
-    gap: 20px;
-    flex-wrap: wrap; /* Allow images to wrap to the next line if needed */
-    margin-bottom: 50px;
-}
-
-.bs-image img {
-    width: 30%; /* Adjust width to fit 3 images */
-    max-height: 60vh;
-    object-fit: cover;
-}
-.bs-btn {
-  
-        background-color:#EC5C39;
-        color: white;
-        padding: 20px 45px;
-        border: none;
-        border-radius: 5px;
-        font-size: 18px;
-        font-family: cabin;
-        cursor: pointer;
-        width: 18vh; /* Only as wide as needed */
-        text-align: left; /* Align text to the left */
-        /* margin-top: 50px; */
-}
-.bs-btn:hover {
-    background-color: #952f10;
-}
-
-
 /* Gallery Section */
 .gallery {
     text-align: center;
     padding: 50px 0;
     background-color: #f9f9f9;
-    height:100vh;
+    height:130vh;
 }
 
 .gallery h2 {
     font-size: 3rem;
     color: #333;
+    margin-bottom: 40px;
+}
+.gallery p {
+    font-size: 1rem;
+    font-family: raleway;
+    color:black;
     margin-bottom: 50px;
 }
-
 /* Carousel Wrapper */
 .carousel {
     position: relative;
-    max-width: 80%;
+    max-width: 90%;
     margin: auto;
     overflow: hidden; /* Hides extra images */
 }
@@ -723,7 +684,7 @@ a {
 /* Track that holds images */
 .carousel-images {
     display: flex;
-    gap: 50px; /* Adds space between images */
+    gap: 40px; /* Adds space between images */
     transition: transform 0.5s ease-in-out;
     /* width: 200%; Ensure smooth scroll */
 }
@@ -757,8 +718,8 @@ a {
     z-index: 999999;
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+.prev { left: 2px; }
+.next { right: 2px; }
 
 .prev:hover, .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
@@ -800,8 +761,6 @@ a {
     margin-bottom: 20px;
 }
 
-
-
 .test-text p {
     white-space: nowrap;  /* Prevents text from wrapping */
     display: inline-block;
@@ -824,8 +783,9 @@ a {
 .scrolling-text-wrapper {
     display: flex;
     gap: 200px; /* Adjust the gap between the repeated quotes */
-    animation: scrollText 10s linear infinite;
+    animation: scrollText 20s linear infinite;
     width: max-content;
+    padding-right: 100px;
 }
 
 @keyframes scrollText {
@@ -839,17 +799,14 @@ a {
 
 .scrolling-text {
     display: inline-block;
-    /* font-size: 5px; Adjust size as needed */
-    opacity: 0.8; 
-
-
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family: Raleway;
+    color: black;
+    opacity: 0.9;
+    padding-right: 50px; /* Adds spacing between items */
 }
 
-/* 
-.test-text p {
-    font-size: 1.8rem;
-    margin-bottom: 12vh;
-} */
 /* Quote Styling */
 .test-text1 {
     display: flex;
@@ -892,35 +849,69 @@ a {
     line-height: 1.4;
 }
 
+
 /* Contact Section Layout */
 .contact-section {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Align items at the top */
-    padding: 100px;
+    align-items: center;
+    padding: 80px;
     background-color: black;
-    color:white;
-    height: 75vh;
+    color: white;
+    height: 80vh;
 }
 
-/* Left Side (Text) */
+/* Left Side: Contact Info & Details */
 .contact-info {
     flex: 1;
+    text-align: left;
     padding-right: 50px;
 }
 
 .contact-info h2 {
     font-family: cabin;
     font-size: 3rem;
-    font-weight: 100;
-    margin-bottom: 20px;
+    font-weight: 600;
     color: #EC5C39;
+    margin-bottom: 10px;
+     
 }
 
 .contact-info p {
     font-family: Raleway;
-    font-size: 18px;
+    font-size: 1.4rem;
     line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Contact Details (Email, Address, Phone) */
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Spacing between details */
+    font-size: 1.2rem;
+}
+
+.contact-details p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+}
+
+.contact-details i {
+    color: #EC5C39; /* Match icon color with brand */
+    font-size: 1.3rem;
+}
+
+.contact-details a {
+    color: #EC5C39; /* Matches the logo color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-details a:hover {
+    text-decoration: underline;
 }
 
 /* Right Side (Form) */
@@ -982,6 +973,31 @@ a {
     background-color: #952f10;
 }
 
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .contact-section {
+        flex-direction: column; /* Stack items on small screens */
+        text-align: center;
+        padding: 50px;
+    }
+
+    .contact-info {
+        text-align: center;
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .contact-details {
+        align-items: center;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+}
+
+
+
 
 /* end Section */
 .end-section {
@@ -1005,18 +1021,13 @@ a {
     filter: brightness(80%);
 }
 
-.end-text {
-    /* background: rgba(0, 0, 0, 0.5); */
-    /* padding: 20px; */
-    text-align: left;
-    /* border-radius: 10px; */
-    margin-left: 80px;
-}
 
 .end-text h3 {
-    font-size: 3rem;
+    font-size: 3.2rem;
     /* margin-bottom: 10px; */
     margin-top: 30px;
+    text-align: left;
+    margin-left: 80px;
     /* margin-right: 100px; */
     font-family: cabin;
     font-weight: 200;
@@ -1038,7 +1049,7 @@ a {
     width: 20vh;
     height: 8vh;
     margin-top: 50px;
-    margin-left: 8px;
+    margin-left: 80px;
 
 }
 
@@ -1142,7 +1153,7 @@ a {
 /* Scrolling Ticker Styling */
 .ticker-container {
     width: 100%;
-    background-color:#d25731;
+    background-color:#952f10;
     overflow: hidden;
     white-space: nowrap;
     position:fixed;
@@ -1177,39 +1188,63 @@ a {
 .site-map-section {
     max-width: 800px;
     margin: 50px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    background-color: black; /* Brand Background */
+    color: white; /* Text Color */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
+/* Site Map Title */
 .site-map-section h2 {
-    font-size: 28px;
-    color: #333;
-    margin-bottom: 10px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #EC5C39; /* Brand Orange */
+    margin-bottom: 15px;
 }
 
+/* Description */
+.site-map-section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+/* Site Map List */
 .site-map-list {
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* List Items */
 .site-map-list li {
-    margin: 10px 0;
-    font-size: 18px;
+    margin: 12px 0;
+    font-size: 1.2rem;
+    text-align: left;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
+/* Site Map Links */
 .site-map-list a {
-    color: #007bff;
+    color: #EC5C39; /* Brand Orange */
     text-decoration: none;
-    transition: 0.3s;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
 .site-map-list a:hover {
     text-decoration: underline;
-    color: #0056b3;
+    color: #ff784e; /* Slightly lighter orange */
 }
+
+
 
 /* Responsive */
 @media (max-width: 768px) {

@@ -67,14 +67,14 @@ document.querySelectorAll(".smooth-scroll").forEach(anchor => {
 
     // 🚀 Popup & Gallery Logic
     const galleryPopup = document.getElementById("gallery-popup");
-    const galleryImages = ["assets/best-1.jpg", "assets/best-2.jpg", "assets/best-3.jpg"];
+    const galleryImages = ["assets/img-10.jpg", "assets/img-4.jpg", "assets/img-3.jpg"];
     let currentIndex = 0;
 
     // Star ratings
 const starRatings = {
-    "assets/best-1.jpg": 5,
-    "assets/best-2.jpg": 4,
-    "assets/best-3.jpg": 5
+    "assets/img-10.jpg": 5,
+    "assets/img-4.jpg": 4,
+    "assets/img-3.jpg": 5
 };
 
 function updateGalleryImage() {
@@ -273,9 +273,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// site map section
+// Site Map Section
 document.addEventListener("DOMContentLoaded", function () {
-    // Smooth scroll for navbar links
+    // Smooth scroll for normal navbar & site map links
     document.querySelectorAll(".smooth-scroll").forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
@@ -289,4 +289,26 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
+    // Scroll to navbar & trigger dropdown for Bestsellers, Hot Deals, New Arrivals
+    document.querySelectorAll(".scroll-and-dropdown").forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetElement = document.getElementById("navbar"); // Scrolls to Navbar
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 20,
+                    behavior: "smooth"
+                });
+            }
+
+            // Open dropdown menu
+            const dropdownMenu = document.querySelector(".dropdown-menu");
+            if (dropdownMenu) {
+                dropdownMenu.classList.add("open"); // Add 'open' class to dropdown
+                setTimeout(() => dropdownMenu.classList.remove("open"), 3000); // Auto-close after 3s
+            }
+        });
+    });
 });
+
