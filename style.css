@@ -354,6 +354,10 @@ a {
     padding: 0.125rem;
 }
 
+.star.inactive {
+    color: #ccc;
+}
+
 /* Ensure Close Button is on top and not affected */
 .close-btn {
     position: absolute;
