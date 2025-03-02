@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FLAVORS</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="test.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar" id="navbar">
+  <nav class="navbar">
     <!-- <div class="visitor-counter">Visitors: <span id="visitorCount">0</span></div> -->
     <div class="logo" id="Home">Flavors
         <div class="visitor-counter">Visitors: <span id="visitorCount">0</span></div>
@@ -20,20 +20,20 @@
         <i class="fa-solid fa-bars"></i>
     </div>
     <ul class="nav-links">
-        <li><a href="#">Home</a></li>
+        <li><a href="#Home" class="smooth-scroll">Home</a></li>
         <li class="dropdown">
             <a href="#" id="shop-link">Shop</a>
             <ul class="dropdown-menu">
-                <li><a href="#" id="bestsellers-dropdown">Bestsellers</a></li>
-                <li><a href="#" id="hot-deals-dropdown">Hot Deals</a></li>
-                <li><a href="#" id="new-arrivals-dropdown">New Arrivals</a></li>
+                <li><a href="#" id="bestsellers-dropdown" data-gallery="bestsellers">Bestsellers</a></li>
+                <li><a href="#" id="hot-deals-dropdown" data-gallery="hotDeals">Hot Deals</a></li>
+                <li><a href="#" id="new-arrivals-dropdown" data-gallery="newArrivals">New Arrivals</a></li>
             </ul>
         </li>
         <li><a href="#gallery-section" class="smooth-scroll">Gallery</a></li>
-        <li><a href="#Reviews">Reviews</a></li>
-        <li><a href="#About Us">About Us</a></li>
-        <li><a href="#Contact Us">Contact Us</a></li>
-        <li><a href="#Site Map">Site Map</a></li>
+        <li><a href="#Reviews" class="smooth-scroll">Reviews</a></li>
+        <li><a href="#About Us" class="smooth-scroll">About Us</a></li>
+        <li><a href="#Contact Us" class="smooth-scroll">Contact Us</a></li>
+        <li><a href="#site-map" class="smooth-scroll">Site Map</a></li>
     </ul>
 </nav>
 
@@ -41,12 +41,10 @@
 <div id="gallery-popup" class="gallery-popup">
     <button id="popup-prev" class="popup-nav">❮</button>
     <div class="gallery-content">
-        <img src="assets/img-10.jpg" alt="Gallery Image">
-        <!-- <img src="assets/img-3.jpg" alt="Gallery Image">
-        <img src="assets/img-4.jpg" alt="Gallery Image"> -->
+        <img src="assets/best-1.jpg" alt="Gallery Image">
         <div class="gallery-text">
-            <h2>Gallery Image</h2>
-            <p>Product description goes here.</p>
+            <h2 id="gallery-title">Get it hot n' spicy🥵</h2>
+            <p class="gallery-description">Default description</p>
             <div class="gallery-stars"></div>
         </div>
     </div>
@@ -54,20 +52,18 @@
     <button id="gallery-close" class="close-btn">✖</button>
 </div>
 
-
-
-    <!-- Hero Section -->
-    <div class="hero-section" data-aos="zoom-in">
-        <img src="assets/hero-image.jpg" alt="spices" class="hero-image">
-        <div class="hero-text" >
-            <h1 data-aos="zoom-in">FLAVORS</h1>
-            <p>Discover the taste of perfection</p>
-            <h3><span class="multiple-text"></span></h3> <!-- Typing animation applies here -->
-            <a href="#" class="btn">LEARN MORE</a>
-        </div>
+<!-- Hero Section -->
+<div class="hero-section" data-aos="zoom-in">
+    <img src="assets/hero-image.jpg" alt="spices" class="hero-image">
+    <div class="hero-text">
+        <h1 data-aos="zoom-in">FLAVORS</h1>
+        <p>Discover the taste of perfection</p>
+        <div class="fade-text" id="text-display">Spices</div> <!-- Typing animation applies here -->
+        <a href="#" class="btn">LEARN MORE</a>
     </div>
+</div>
 
-    <!-- About Us Section -->
+<!-- About Us Section -->
 <div class="about-us" id="About Us">
     <div class="about-container">
         <div class="about-text">
@@ -85,11 +81,9 @@
     </div>
 </div>
 
-
-    <!-- Gallery Section (Replacing Bestsellers) -->
-<div id="gallery-section" class="gallery">
+<!-- Gallery Section (Replacing Bestsellers) -->
+<div id="gallery-section" class="gallery" data-aos="zoom-in-up">
     <h2>Our Gallery</h2>
-    <p>This is a collection of some of our most highly rated products</p>
     <div class="carousel">
         <button class="prev">&#10094;</button> <!-- Left Arrow -->
         <div class="carousel-images">
@@ -110,9 +104,8 @@
     </div>
 </div>
 
-
-    <!-- Testimonials Section -->
-<div class="testimonials" id="Reviews">
+ <!-- Testimonials Section -->
+ <div class="testimonials" id="Reviews">
     <div class="test-container">
         <div class="test-text">
             <h2 data-aos="zoom-in">What They're Saying</h2>
@@ -138,9 +131,8 @@
     </div>
 </div>
 
-
-   <!-- Contact Section -->
-<div class="contact-section" id="Contact Us">
+ <!-- Contact Section -->
+ <div class="contact-section" id="Contact Us">
     <!-- Left Side: Contact Info -->
     <div class="contact-info">
         <h2 data-aos="zoom-in-down">Get in Touch</h2>
@@ -166,23 +158,23 @@
     </form>
 </div>
 
-    <!-- end-section -->
-    <div class="end-section">
-        <img src="assets/end-img.jpg" alt="spices" class="end-image">
-        <div class="end-text">
-            <h3>How do we do it?</h3>
-            <h3>Learn more about us and our process.</h3>
-             <a href="#" class="end-btn">LEARN MORE</a>
-        </div>
+<!-- end-section -->
+<div class="end-section">
+    <img src="assets/end-img.jpg" alt="spices" class="end-image">
+    <div class="end-text" data-aos="zoom-in-up">
+        <h3>How do we do it?</h3>
+        <h3>Learn more about us and our process.</h3>
+         <a href="#" class="end-btn">LEARN MORE</a>
     </div>
+</div>
 
 <!-- Site Map Section -->
-<div id="site-map" class="site-map-section">
-    <h2>Site Map</h2>
+<div id="site-map" class="site-map-section" data-aos="zoom-in-up">
+    <h2 id="Site-map">Site Map</h2>
     <p>This section provides an overview of all the pages and sections in the FLAVORS website.</p>
     
     <ul class="site-map-list">
-        <li><a href="#hero-section" class="smooth-scroll">Home</a> - The main landing page.</li>
+        <li><a href="#Home" class="smooth-scroll">Home</a> - The main landing page.</li>
         <li><a href="#About Us" class="smooth-scroll">About Us</a> - Learn more about our brand.</li>
         <li><a href="#gallery-section" class="smooth-scroll">Gallery</a> - View our collection of spices.</li>
         <li><a href="#Reviews" class="smooth-scroll">Reviews</a> - Read what our customers say.</li>
@@ -193,49 +185,49 @@
     </ul>
 </div>
 
-    <!-- Footer Section -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>Hours</h3>
-                <p>Monday - Friday</p>
-                <p>10 AM - 6 PM</p>
-            </div>
-            <div class="footer-column">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-column">
-                <h3>Flavors</h3>
-                <p>123 Spice Street</p>
-                <p>Abuja Nigeria</p>
-                <p class="contact-link">email@example.com</p>
-                <p class="contact-link">(555) 555-5555</p>
+ <!-- Footer Section -->
+ <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>Hours</h3>
+            <p>Monday - Friday</p>
+            <p>10 AM - 6 PM</p>
+        </div>
+        <div class="footer-column">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
             </div>
         </div>
-        <!-- Scrolling Ticker -->
-        <div class="ticker-container">
-            <div class="ticker">
-                <p id="ticker-text">
-                    📅 Fetching location and date... &nbsp;&nbsp; 📅 Fetching location and date... &nbsp;&nbsp;
-                </p>
-            </div>
+        <div class="footer-column">
+            <h3>Flavors</h3>
+            <p>123 Spice Street</p>
+            <p>Abuja Nigeria</p>
+            <p class="contact-link">email@example.com</p>
+            <p class="contact-link">(555) 555-5555</p>
         </div>
-        
-    </footer>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      AOS.init({
-        offset: 300,
-        duration: 1400,
-      });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="index.js"></script>
+    </div>
+    <!-- Scrolling Ticker -->
+    <div class="ticker-container">
+        <div class="ticker">
+            <p id="ticker-text">
+                📅 Fetching location and date... &nbsp;&nbsp; 📅 Fetching location and date... &nbsp;&nbsp;
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init({
+    offset: 300,
+    duration: 1400,
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="test.js"></script>
 
 </body>
 </html>
