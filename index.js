@@ -261,6 +261,68 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     
 
+    document.addEventListener("DOMContentLoaded", function () {
+    // Smooth scrolling for normal links
+    document.querySelectorAll(".smooth-scroll").forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 50, // Adjust for navbar height
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+
+    // Scroll to navbar & trigger dropdown for Bestsellers, Hot Deals, New Arrivals
+    document.querySelectorAll(".scroll-and-dropdown").forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const navbar = document.getElementById("navbar"); // Scrolls to Navbar
+            if (navbar) {
+                window.scrollTo({
+                    top: navbar.offsetTop - 20,
+                    behavior: "smooth"
+                });
+            }
+
+            // Open the Shop dropdown menu
+            const shopDropdown = document.querySelector(".dropdown-menu");
+            if (shopDropdown) {
+                shopDropdown.classList.add("open"); // Show dropdown
+                setTimeout(() => shopDropdown.classList.remove("open"), 3000); // Auto-close after 3s
+            }
+        });
+    });
+});
+
+// site map
+document.addEventListener("DOMContentLoaded", function () {
+    // Handle Site Map links that need to open the Shop dropdown
+    document.querySelectorAll(".scroll-and-dropdown").forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault(); // Stop link behavior
+
+            // Find the dropdown menu
+            const dropdown = document.querySelector(".dropdown");
+            if (dropdown) {
+                dropdown.classList.add("active"); // Open dropdown
+
+                // Close dropdown after 5 seconds
+                setTimeout(() => {
+                    dropdown.classList.remove("active");
+                }, 5000);
+            }
+        });
+    });
+});
+
+         
+
+
     // 🚀 Ticker & Location
     function updateTicker(location) {
         const now = new Date();
