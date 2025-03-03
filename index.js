@@ -18,13 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
         menuToggle.addEventListener("click", function () {
             navLinks.classList.toggle("active");
         });
-
-        // Close menu when a link is clicked
-        document.querySelectorAll(".nav-links a").forEach(link => {
-            link.addEventListener("click", () => {
-                navLinks.classList.remove("active");
-            });
-        });
     }
 
     // 🚀 Fade Text Animation
@@ -33,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const textElement = document.getElementById("text-display");
 
     if (textElement) {
-        textElement.style.transition = "opacity 1s ease-in-out";
+        textElement.style.transition = "opacity 1s ease-in-out"; // Ensure smooth transition
 
         function fadeText() {
             textElement.style.opacity = 0; // Fade out
@@ -54,9 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const targetId = this.getAttribute("href").substring(1);
             const targetElement = document.getElementById(targetId);
             if (targetElement) {
-                const offset = 50; // Adjust for fixed navbar height
                 window.scrollTo({
-                    top: targetElement.offsetTop - offset,
+                    top: targetElement.offsetTop - 50,
                     behavior: "smooth"
                 });
             }
@@ -90,36 +82,38 @@ document.addEventListener("DOMContentLoaded", function () {
     if (galleryPopup && galleryImage && galleryDescription) {
         const galleryData = {
             bestsellers: [
-                { src: "assets/img-8.jpg", description: "Premium quality spice blend, perfect for cooking." },
-                { src: "assets/img-17.jpg", description: "Organic cloves sourced from the finest farms." },
-                { src: "assets/img-1.jpg", description: "Cinnamon sticks with a rich aroma and flavor." }
+                { src: "assets/img-8.jpg", description: "Premium quality spice blend, perfect for cooking.", price: "₦200,000" },
+                { src: "assets/img-17.jpg", description: "Organic cloves sourced from the finest farms.", price: "₦150,000" },
+                { src: "assets/img-1.jpg", description: "Cinnamon sticks with a rich aroma and flavor.", price: "₦250,000" }
             ],
             hotDeals: [
-                { src: "assets/img-16.jpg", description: "Limited-time discount on fresh garlic paste!" },
-                { src: "assets/img-10.jpg", description: "Buy one get one free on organic nutmeg." },
-                { src: "assets/img-11.jpg", description: "Exclusive offer on dried basil leaves." }
+                { src: "assets/img-16.jpg", description: "Limited-time discount on fresh garlic paste!", price: "₦100,000" },
+                { src: "assets/img-10.jpg", description: "Buy one get one free on organic nutmeg.", price: "₦98,000" },
+                { src: "assets/img-11.jpg", description: "Exclusive offer on dried basil leaves.", price: "₦120,000" }
             ],
             newArrivals: [
-                { src: "assets/img-9.jpg", description: "Our brand new brown garnishing sauce!" },
-                { src: "assets/img-13.jpg", description: "Special turmeric powder with a strong essence." },
-                { src: "assets/img-14.jpg", description: "Spicy sunday grill sauce special ." }
+                { src: "assets/img-9.jpg", description: "Our brand new brown garnishing sauce!", price: "₦220,000" },
+                { src: "assets/img-13.jpg", description: "Special turmeric powder with a strong essence.", price: "₦170,000" },
+                { src: "assets/img-14.jpg", description: "Spicy sunday grill sauce special.", price: "₦190,000" }
             ]
         };
-
         let currentCategory = "bestsellers";
         let currentIndex = 0;
 
         function updateGalleryImage() {
             const currentImages = galleryData[currentCategory];
+            console.log("Current Category:", currentCategory); // Debugging
+            console.log("Current Images:", currentImages); // Debugging
             if (currentImages && currentImages[currentIndex]) {
-                const { src, description } = currentImages[currentIndex];
+                const { src, description, price } = currentImages[currentIndex];
                 galleryImage.src = src;
-                galleryDescription.textContent = description;
+                galleryDescription.innerHTML = `${description}<br><span class="gallery-price">${price}</span>`;
                 updateStars(src);
             }
         }
 
         function openGalleryPopup(category) {
+            console.log("Opening Gallery for:", category); // Debugging
             currentCategory = category;
             currentIndex = 0;
             galleryPopup.style.display = "flex";
@@ -135,6 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
             button.addEventListener("click", function (event) {
                 event.preventDefault();
                 const category = this.dataset.gallery;
+                console.log("Button Clicked:", category); // Debugging
                 openGalleryPopup(category);
             });
         });
@@ -153,24 +148,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.getElementById("gallery-close")?.addEventListener("click", closeGallery);
 
-        // Close gallery when clicking outside
-        document.addEventListener("click", function (event) {
-            if (event.target === galleryPopup) {
-                closeGallery();
-            }
-        });
-
         // ⭐ Star ratings logic
         const starRatings = {
-            "assets/img-8.jpg": 5,
-          "assets/img-17.jpg": 4,
-          "assets/img-1.jpg": 5,
-           "assets/img-16.jpg": 3,
-       "assets/img-10.jpg": 4,
-    "assets/img-11.jpg": 5,
-    "assets/img-9.jpg": 4,
-    "assets/img-13.jpg": 3,
-    "assets/img-14.jpg": 5
+            "assets/best-1.jpg": 5,
+            "assets/best-2.jpg": 4,
+            "assets/best-3.jpg": 5
         };
 
         function updateStars(imageSrc) {
@@ -196,8 +178,19 @@ document.addEventListener("DOMContentLoaded", function () {
             starRatings[imageSrc] = rating;
             updateStars(imageSrc);
         }
+
+        // CSS styles for inactive stars
+        const style = document.createElement("style");
+        style.innerHTML = `
+            .star.inactive {
+                color: gray;
+            }
+        `;
+        document.head.appendChild(style);
     }
 
+
+    
     // 🚀 Carousel Logic
     const carouselTrack = document.querySelector(".carousel-images");
     const prevButton = document.querySelector(".prev");
@@ -206,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (carouselTrack && prevButton && nextButton && carouselImages.length > 0) {
         let index = 0;
-        const imagesPerView = window.innerWidth < 768 ? 1 : 3; // Adjust for mobile
+        const imagesPerView = 3;
         const totalImages = carouselImages.length;
         const imageWidth = carouselImages[0].clientWidth + 10;
 
@@ -259,7 +252,6 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("formMessage").style.display = "none";
         }, 3000);
     });
-    
 
     // 🚀 Ticker & Location
     function updateTicker(location) {
@@ -299,4 +291,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
     fetchLocation();
     setInterval(fetchLocation, 60000);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Smooth scroll for normal navbar & site map links
+    document.querySelectorAll(".smooth-scroll").forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 50, // Adjust for navbar height
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+
+    // Scroll to navbar & trigger dropdown for Bestsellers, Hot Deals, New Arrivals
+    document.querySelectorAll(".scroll-and-dropdown").forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetElement = document.getElementById("navbar"); // Scrolls to Navbar
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 20,
+                    behavior: "smooth"
+                });
+            }
+
+            // Open dropdown menu
+            const dropdownMenu = document.querySelector(".dropdown-menu");
+            if (dropdownMenu) {
+                dropdownMenu.classList.add("open"); // Add 'open' class to dropdown
+                setTimeout(() => dropdownMenu.classList.remove("open"), 3000); // Auto-close after 3s
+            }
+        });
+    });
 });
