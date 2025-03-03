@@ -53,8 +53,9 @@ a {
 /* Visitor Counter */
 .visitor-counter {
     font-size: 0.625rem;
-    background-color: #dcd9d8;
+    background-color:#f6eded;
     color: black;
+    align-items: center;
     padding: 0.625rem;
     height: 2.5rem;
     border-radius: 0.3125rem;
@@ -457,20 +458,15 @@ a {
 }
 
 /* Typing Animation Text */
-.hero-text h3 {
-    font-size: 1.8rem; /* Make it slightly smaller than H1 */
-    font-weight: 500;
-    display: inline-block;
-    margin-top: 0.3125rem;
-    white-space: nowrap; /* Prevents breaking */
-}
+
 
 /* fade text design */
 .fade-text {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 2.5rem;
+    font-weight: 400;
     opacity: 1;
     transition: opacity 1s ease-in-out;
+    margin-bottom: 30px;
 }
 
 .btn {
@@ -564,7 +560,7 @@ a {
 .about-us {
     background-color: #F4F4F3;
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     color: black;
     overflow: hidden;
 }
@@ -586,7 +582,7 @@ a {
     font-family: 'Raleway', sans-serif;
     font-size: 1.25rem;
     font-weight: 400;
-    line-height: 2.1875rem;
+    line-height: 2.8rem;
 }
 
 .about-text strong {
@@ -770,6 +766,7 @@ a {
     overflow: hidden;
     white-space: nowrap; /* Ensures text stays in one line */
     position: relative;
+    
 }
 
 .scrolling-text-wrapper {
@@ -777,6 +774,7 @@ a {
     gap: 12.5rem; /* Adjust the gap between the repeated quotes */
     animation: scrollText 20s linear infinite;
     width: max-content;
+    padding-right: 100px;
 }
 
 @keyframes scrollText {
@@ -790,16 +788,21 @@ a {
 
 .scrolling-text {
     display: inline-block;
-    opacity: 0.8;
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family: Raleway;
+    color: black;
+    opacity: 0.9;
+    padding-right: 50px; 
 }
-
+/* 
 .test-text1 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 2.5rem;
     position: relative;
-}
+} */
 
 /* First Quote - Aligned Left */
 .test2 {
@@ -862,9 +865,21 @@ a {
 .contact-info p {
     font-family: 'Raleway', sans-serif;
     font-size: 1.125rem;
-    line-height: 1.6;
+    line-height: 2.5;
+}
+.contact-details a {
+    color: #EC5C39;
+    text-decoration: none;
+    font-weight: bold;
 }
 
+.contact-details a:hover {
+    text-decoration: underline;
+}
+.fa-solid{
+    color:#EC5C39;
+    margin-right: 18px;
+}
 /* Right Side (Form) */
 .contact-form {
     flex: 1;
@@ -1025,8 +1040,8 @@ a {
     color: black;
 }
 
-.contact-link {
-    color: #EC5C39 !important; /* A nice blue color like a link */
+.contact-link a{
+    color: #EC5C39 !important; 
     text-decoration: underline;
     cursor: pointer; /* Makes it feel like a link */
 }
@@ -1109,7 +1124,7 @@ a {
     border-radius: 0.5rem;
     box-shadow: 0px 0px 0.625rem rgba(0, 0, 0, 0.938);
     text-align: center;
-    color: #ffffff;
+    color: white;
 }
 
 .site-map-section h2 {
