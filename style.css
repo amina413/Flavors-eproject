@@ -67,7 +67,7 @@ a {
     flex-direction: row-reverse;
     gap: 1.25rem;
     font-size: 2rem;
-    font-weight: bold;
+    font-weight: 500;
     color: #EC5C39;
     font-family: 'Raleway', sans-serif;
 }

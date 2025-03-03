@@ -78,6 +78,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const galleryPopup = document.getElementById("gallery-popup");
     const galleryImage = document.querySelector(".gallery-content img");
     const galleryDescription = document.querySelector(".gallery-description");
+    const galleryTitle = document.querySelector(".gallery-title"); 
+   
 
     if (galleryPopup && galleryImage && galleryDescription) {
         const galleryData = {
@@ -148,6 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         document.getElementById("gallery-close")?.addEventListener("click", closeGallery);
 
+        
         // ⭐ Star ratings logic
         const starRatings = {
             "assets/best-1.jpg": 5,
