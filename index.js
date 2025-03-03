@@ -231,6 +231,36 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 5000);
     }
 
+    // form submission
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent actual submission
+    
+        let email = document.getElementById("email").value;
+        let message = document.getElementById("message").value;
+    
+        if (email.trim() === "" || message.trim() === "") {
+            document.getElementById("formMessage").innerText = "Please fill in all required fields.";
+            document.getElementById("formMessage").style.color = "red";
+            document.getElementById("formMessage").style.display = "block";
+            return;
+        }
+    
+        // Simulate form submission success
+        document.getElementById("formMessage").innerText = "Message sent successfully!";
+        document.getElementById("formMessage").style.color = "green";
+        document.getElementById("formMessage").style.display = "block";
+    
+        // Clear form fields after submission (optional)
+        document.getElementById("email").value = "";
+        document.getElementById("message").value = "";
+    
+        // Hide message after 3 seconds
+        setTimeout(() => {
+            document.getElementById("formMessage").style.display = "none";
+        }, 3000);
+    });
+    
+
     // 🚀 Ticker & Location
     function updateTicker(location) {
         const now = new Date();
